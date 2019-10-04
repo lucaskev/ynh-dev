@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "/Users/lucas/git/ci"
+		},
+		{
+			"path": "/Users/lucas/git/yunohost"
+		},
+		{
+			"path": "/Users/lucas/git/ansible-yunohost"
+		}
+	],
+	"settings": {}
+}

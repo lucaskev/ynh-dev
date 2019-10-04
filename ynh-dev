@@ -113,7 +113,7 @@ function create_sym_link() {
 
 function check_lxc_setup()
 {
-    local LXC_VERSION=$(lxc-info --version)
+    local LXC_VERSION=$(lxc --version)
 
     [[ "${LXC_VERSION:0:1}" == 3 ]] \
         || critical "You need at least version 3 of LXC otherwise the box won't work"
