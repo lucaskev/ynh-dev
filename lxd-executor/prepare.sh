@@ -46,9 +46,10 @@ install_dependencies () {
     # Install Git LFS, git comes pre installed with ubuntu image.
     lxc exec "$CONTAINER_ID" -- sh -c "curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash"
     lxc exec "$CONTAINER_ID" -- sh -c "apt-get install git-lfs"
-
+    echo "DEBUG: Trying to curl"
     # Install gitlab-runner binary since we need for cache/artifacts.
     lxc exec "$CONTAINER_ID" -- sh -c "curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
+    echo "DEBUG: Trying to chmod"
     lxc exec "$CONTAINER_ID" -- sh -c "chmod +x /usr/local/bin/gitlab-runner"
 }
 
@@ -57,3 +58,30 @@ echo "Running in $CONTAINER_ID"
 start_container
 
 install_dependencies
+
+
+# # prebuild.sh:
+# export DEBIAN_FRONTEND=noninteractive
+
+# # Configure guest hostname
+# sudo bash -c 'echo 127.0.1.1 yunohost.yunohost.org yunohost >> /etc/hosts'
+# sudo hostname yunohost.yunohost.org
+# sudo bash -c 'echo yunohost.yunohost.org > /etc/hostname'
+
+# # Define root password
+# echo -e "yunohost\nyunohost" | sudo passwd root
+
+# # Allow sudo removal (YunoHost use sudo-ldap)
+# export SUDO_FORCE_REMOVE=yes
+
+# # Upgrade guest (done in install script)
+# sudo apt-get update
+# sudo apt-get -y --force-yes upgrade
+# sudo apt-get -y --force-yes dist-upgrade
+
+# # Install YunoHost
+# wget https://raw.githubusercontent.com/YunoHost/install_script/stretch/install_yunohost -q -O /tmp/install_yunohost
+# sudo bash /tmp/install_yunohost -a -d unstable
+
+# # Cleanup
+# sudo apt-get clean -y
