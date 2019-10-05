@@ -1,0 +1,30 @@
+stages:
+  # - ansible-lint
+  - deploy_app
+
+# ansible-lint:
+#   only:
+#       - master
+#   stage: ansible-lint
+#   image: yokogawa/ansible-lint
+#   allow_failure: true
+#   script:
+
+  # - 'ansible-lint setup.yml'
+
+deploy_app:
+  only:
+      - master
+  stage: deploy_app
+  # TODO: use ubuntu image to install and ansible image to exec ansible from another container in the same network
+  # Requires privileged container but is supposed to be able to run services
+  # image: jrei/systemd-ubuntu:latest 
+  # image: williamyeh/ansible:ubuntu18.04
+  # image: ubuntu:latest
+  script:
+      - apt update
+      - echo "yes!"
+      # - apt install --yes sudo software-properties-common
+      # - apt-add-repository --yes --update ppa:ansible/ansible
+      # - apt install --yes ansible
+      # - 'cd ansible; ansible-playbook -i gitlab-ci-inventory.ini setup.dev.yml -vv --extra-var docker_enabled=true'
