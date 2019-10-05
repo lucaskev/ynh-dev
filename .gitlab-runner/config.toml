@@ -6,6 +6,6 @@
   builds_dir = "/builds"
   cache_dir = "/cache"
   [runners.custom]
-    prepare_exec = "/ynh-dev/.gitlab-runner/lxd-executor/prepare.sh" # Path to a bash script to create lxd container and download dependencies.
-    run_exec = "/ynh-dev/.gitlab-runner/lxd-executor/run.sh" # Path to a bash script to run script inside the container.
-    cleanup_exec = "/ynh-dev/.gitlab-runner/lxd-executor/cleanup.sh" # Path to bash script to delete container.
+    prepare_exec = "lxd-executor/prepare.sh" # Path to a bash script to create lxd container and download dependencies.
+    run_exec = "lxd-executor/run.sh" # Path to a bash script to run script inside the container.
+    cleanup_exec = "lxd-executor/cleanup.sh" # Path to bash script to delete container.
