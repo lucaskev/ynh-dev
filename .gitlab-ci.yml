@@ -13,6 +13,8 @@ stages:
   # - 'ansible-lint setup.yml'
 
 deploy_app:
+  tags:
+    - ynh 
   only:
       - master
   stage: deploy_app
