@@ -23,7 +23,7 @@ deploy_app:
   # image: ubuntu:latest
   script:
       - apt update
-      - echo "yes!"
+      - echo "Test succeeded w/ custom executor!"
       # - apt install --yes sudo software-properties-common
       # - apt-add-repository --yes --update ppa:ansible/ansible
       # - apt install --yes ansible
