@@ -1,0 +1,11 @@
+[[runners]]
+  name = "lxd-executor"
+  url = "https://gitlab.com/"
+  token = "xxxxxx"
+  executor = "custom
+  builds_dir = "/builds"
+  cache_dir = "/cache"
+  [runners.custom]
+    prepare_exec = "/opt/lxd-executor/prepare.sh" # Path to a bash script to create lxd container and download dependencies.
+    run_exec = "/opt/lxd-executor/run.sh" # Path to a bash script to run script inside the container.
+    cleanup_exec = "/opt/lxd-executor/cleanup.sh" # Path to bash script to delete container.
