@@ -8,11 +8,11 @@ source ${currentDir}/base.sh # Get variables from base.
 
 echo "DEBUG:/opt/lxd-executor/run.sh"
 # lxc exec "$CONTAINER_ID" "/sbin/ping 8.8.8.8 -c 4"
-# lxc exec "$CONTAINER_ID" "/bin/uname"
+lxc exec "$CONTAINER_ID" -- sh -c "/bin/uname"
 # lxc exec "$CONTAINER_ID" < ../prebuild.sh
 
-lxc exec "$CONTAINER_ID" /bin/bash < "$(build_script)"
-lxc exec "$CONTAINER_ID" /bin/bash < "${1}"
+# lxc exec "$CONTAINER_ID" /bin/bash < "$(build_script)"
+# lxc exec "$CONTAINER_ID" /bin/bash < "${1}"
 
 
 
