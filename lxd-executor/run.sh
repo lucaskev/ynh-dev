@@ -6,9 +6,10 @@ currentDir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 source ${currentDir}/base.sh # Get variables from base.
 
 
-echo "DEBUG:/opt/lxd-executor/run.sh"
+echo "DEBUG:Try to pipe to lxc..."
 # lxc exec "$CONTAINER_ID" "/sbin/ping 8.8.8.8 -c 4"
-lxc exec "$CONTAINER_ID" -- sh -c "/bin/uname"
+lxc exec "$CONTAINER_ID" -- sh -c "echo 'DEBUG: Run command from arg'"
+lxc exec "$CONTAINER_ID" -- sh -c "${1}"
 # lxc exec "$CONTAINER_ID" < ../prebuild.sh
 
 # lxc exec "$CONTAINER_ID" /bin/bash < "$(build_script)"
