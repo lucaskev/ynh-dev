@@ -51,9 +51,9 @@ install_dependencies () {
     lxc exec "$CONTAINER_ID" -- sh -c "curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
     echo "DEBUG: Trying to chmod"
     lxc exec "$CONTAINER_ID" -- sh -c "chmod +x /usr/local/bin/gitlab-runner"
-    
+
     lxc exec "$CONTAINER_ID" -- sh -c "apt-add-repository --yes --update ppa:ansible/ansible"
-    lxc exec "$CONTAINER_ID" -- sh -c "apt-get install ansible"
+    lxc exec "$CONTAINER_ID" -- sh -c "apt-get install ansible --yes"
 }
 
 echo "Running in $CONTAINER_ID"

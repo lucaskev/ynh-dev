@@ -147,6 +147,15 @@ function attach_ynhdev()
     sudo lxc exec $BOX -- /bin/bash
 }
 
+function exec_ynhdev()
+{
+    check_lxd_setup
+    local BOX=${1:-ynh-dev}
+    local CMD=${2:-/bin/bash}
+    sudo lxc start $BOX 2>/dev/null || true
+    sudo lxc exec $BOX -- "$CMD"
+}
+
 function destroy_ynhdev()
 {
     check_lxd_setup
