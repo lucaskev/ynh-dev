@@ -12,9 +12,9 @@ echo "DEBUG: Piping commands to lxc..."
 # lxc exec "$CONTAINER_ID" -- sh -c "echo 'DEBUG: Run command ls'"
 # lxc exec "$CONTAINER_ID" -- sh -c "ls /builds/"
 # lxc exec "$CONTAINER_ID" -- sh -c "echo 'DEBUG: Run command ansible'"
-lxc file push "$CONTAINER_ID" ../test.yml /test.yml
-ANSIBLE_CMD="ansible-playbook --connection=local /test.yml"
-lxc exec "$CONTAINER_ID" -- sh -c "$ANSIBLE_CMD"
+# lxc file push "$CONTAINER_ID" ../test.yml /test.yml
+# ANSIBLE_CMD="ansible-playbook --connection=local /test.yml"
+# lxc exec "$CONTAINER_ID" -- sh -c "$ANSIBLE_CMD"
 
 # lxc file push "$CONTAINER_ID" "${1}" "/tmp/script"
 # lxc exec "$CONTAINER_ID" /bin/bash /tmp/script "${2}"

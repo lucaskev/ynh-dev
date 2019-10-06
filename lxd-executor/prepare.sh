@@ -44,16 +44,16 @@ start_container () {
 
 install_dependencies () {
     # Install Git LFS, git comes pre installed with ubuntu image.
-    # lxc exec "$CONTAINER_ID" -- sh -c "curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash"
-    # lxc exec "$CONTAINER_ID" -- sh -c "apt-get install git-lfs"
-    echo "DEBUG: Trying to curl"
+    lxc exec "$CONTAINER_ID" -- sh -c "curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | sudo bash"
+    lxc exec "$CONTAINER_ID" -- sh -c "apt-get install git-lfs"
+    # echo "DEBUG: Trying to curl"
     # Install gitlab-runner binary since we need for cache/artifacts.
     lxc exec "$CONTAINER_ID" -- sh -c "curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64"
-    echo "DEBUG: Trying to chmod"
+    # echo "DEBUG: Trying to chmod"
     lxc exec "$CONTAINER_ID" -- sh -c "chmod +x /usr/local/bin/gitlab-runner"
 
-    lxc exec "$CONTAINER_ID" -- sh -c "apt-add-repository --yes --update ppa:ansible/ansible"
-    lxc exec "$CONTAINER_ID" -- sh -c "apt-get install ansible --yes"
+    # lxc exec "$CONTAINER_ID" -- sh -c "apt-add-repository --yes --update ppa:ansible/ansible"
+    # lxc exec "$CONTAINER_ID" -- sh -c "apt-get install ansible --yes"
 }
 
 echo "Running in $CONTAINER_ID"
