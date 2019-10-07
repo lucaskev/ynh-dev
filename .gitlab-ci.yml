@@ -21,9 +21,9 @@ deploy_app:
   # Requires privileged container
   
   script:
-    - /bin/echo
+    # - /bin/echo
     # - echo "Test succeeded w/ custom executor!"
-    # - apt install --yes sudo software-properties-common
-    # - apt-add-repository --yes --update ppa:ansible/ansible
-    # - apt install --yes ansible
-    # - 'cd $CI_PROJECT_DIR; ansible-playbook --connection=local test.yml -vv'
+    - apt install --yes sudo software-properties-common
+    - apt-add-repository --yes --update ppa:ansible/ansible
+    - apt install --yes ansible
+    - 'cd $CI_PROJECT_DIR; ansible-playbook --connection=local test.yml -vv'
