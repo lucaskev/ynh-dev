@@ -2,7 +2,10 @@
 
 Repo for bootstrapping a gitlab-ci w/ a specific runner using custom executor LXD for installing and testing YNH w/ Bash, and Ansible (and maybe molecule). 
 
-# TODO: use variables in executor to tell if Debian 9 or Debian 10 box
+# TODO:
+* use variables in executor to tell if Debian 9 or Debian 10 box
+* add .deb packaging into CI
+* add real tests
 
 ## Steps to build executor on VPS
 1. SSH into it

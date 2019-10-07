@@ -1,6 +1,6 @@
 stages:
   # - ansible-lint
-  - deploy_app
+  - install_ynh
   - ansible_tests
 
 # ansible-lint:
@@ -13,12 +13,12 @@ stages:
 
   # - 'ansible-lint setup.yml'
 
-deploy_app:
+install_ynh:
   tags:
     - ynh
   only:
     - master
-  stage: deploy_app
+  stage: install_ynh
   # Requires privileged container
   
   script:
@@ -31,7 +31,7 @@ deploy_app:
     - 'cd $CI_PROJECT_DIR; echo "Installing YunoHost..."; ./prebuild.sh'
     # - /etc/yunohost/installed
     - /usr/bin/yunohost tools postinstall -d ynh.local -p ynhynhynh
-    - /usr/bin/yunohost user create johndoe -f John -l Doe -m john.doe@ynh.local -q 0 -p ynhynhynh --admin-password ynhynhynh")
+    - /usr/bin/yunohost user create johndoe -f John -l Doe -m john.doe@ynh.local -q 0 -p ynhynhynh --admin-password ynhynhynh
     - /usr/bin/yunohost tools diagnosis
     
 ansible_tests:
