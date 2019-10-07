@@ -85,3 +85,5 @@ gitlab-runner exec custom deploy_app --custom-run-exec $EXECUTOR_PATH/run.sh   -
 
 ## On macOS
 On macOS I used multipass with a remote LXD (default IP should be at: 192.168.64.2)
+
+# Remember that if you edit lxd-executor/* files you gotta copy them to /opt/lxd-executor on the host!
