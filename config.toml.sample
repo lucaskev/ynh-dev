@@ -2,7 +2,7 @@
   name = "lxd-executor"
   url = "https://gitlab.com/"
   token = "xxxxxx"
-  executor = "custom
+  executor = "custom"
   builds_dir = "/builds"
   cache_dir = "/cache"
   [runners.custom]
