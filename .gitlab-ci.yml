@@ -28,6 +28,6 @@ deploy_app:
     # install yunohost
     - 'cd $CI_PROJECT_DIR; echo "Installing YunoHost..."; ./prebuild.sh'
     - apt install --yes sudo software-properties-common
-    - apt-add-repository --yes --update ppa:ansible/ansible
+    - 'apt-add-repository --yes --update ppa:ansible/ansible'
     - apt install --yes ansible
     - 'cd $CI_PROJECT_DIR; ansible-playbook --connection=local test.yml -vv'
