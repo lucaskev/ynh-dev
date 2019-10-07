@@ -1,5 +1,7 @@
 export DEBIAN_FRONTEND=noninteractive
 
+set -e
+
 # Configure guest hostname
 sudo bash -c 'echo 127.0.1.1 yunohost.yunohost.org yunohost >> /etc/hosts'
 sudo hostname yunohost.yunohost.org
