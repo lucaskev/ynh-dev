@@ -7,5 +7,6 @@
   cache_dir = "/cache"
   [runners.custom]
     prepare_exec = "/Users/lucas/git/ynh-dev/lxd-executor/prepare.sh" # Path to a bash script to create lxd container and download dependencies.
+    # prepare_args = "CUSTOM_ENV_CI_IMAGE_ID" # Image arg
     run_exec = "/Users/lucas/git/ynh-dev/lxd-executor/run.sh" # Path to a bash script to run script inside the container.
     cleanup_exec = "/Users/lucas/git/ynh-dev/lxd-executor/cleanup.sh" # Path to bash script to delete container.
