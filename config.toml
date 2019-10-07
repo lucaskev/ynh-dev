@@ -9,7 +9,8 @@ check_interval = 0
   url = "https://gitlab.com/"
   token = "eRaxMNUjk8Whyn-GPxgM"
   executor = "custom"
-  [runners.custom_build_dir]
+  builds_dir = "/builds"
+  cache_dir = "/cache"
   [runners.cache]
     [runners.cache.s3]
     [runners.cache.gcs]

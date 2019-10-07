@@ -73,13 +73,16 @@ cluster: null
 7.  Edit the config by adding the token obtained at [https://gitlab.com/lucaskev/ynh-dev/-/settings/ci_cd] (the "Set up a specific Runner manually" part): `vim config.toml`
 8. Install gitlab-runner's repo: `curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | bash` (think about sudo if you're not root)
 9.  Install gitlab-runner: `apt-get install gitlab-runner`
-10. Copy the conf `cp config.toml /etc/gitlab-runner/`
-11. `gitlab-runner register`
+10. `gitlab-runner register`
     1.  `https://gitlab.com/`
     2.  The token
     3.  A description
     4.  Tags
-12. Run Runner: `gitlab-runner run`
+    5.  `custom`
+    6.  
+<!-- 11. Copy the conf `cp config.toml /etc/gitlab-runner/` -->
+12. Open file at `/etc/gitlab-runner/config.toml` and tweak accordingly
+13. Run Runner: `gitlab-runner run`
 
 ## On macOS
 On macOS I used multipass.
