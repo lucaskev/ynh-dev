@@ -2,6 +2,7 @@
 
 Repo for bootstrapping a gitlab-ci w/ a specific runner using custom executor LXD for installing and testing YNH w/ Bash, and Ansible (and maybe molecule). 
 
+# TODO : make box privileged
 
 ## Steps to build executor on VPS
 1. SSH into it
@@ -57,30 +58,29 @@ profiles:
   name: default
 cluster: null
 ```
-1. 
-2. 
-3. Clone this repo: `git clone https://gitlab.com/lucaskev/ynh-dev/`
-4. `cd ynh-dev`
-5.  `cp -r lxd-executor/ /opt`
-6.  `cp config.toml.sample config.toml`
-7.  Edit the config by adding the token obtained at [https://gitlab.com/lucaskev/ynh-dev/-/settings/ci_cd] (the "Set up a specific Runner manually" part): `vim config.toml`
-8. Install gitlab-runner's repo: `curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | bash` (think about sudo if you're not root)
-9.  Install gitlab-runner: `apt-get install gitlab-runner`
-10. `gitlab-runner register`
+1. Clone this repo: `git clone https://gitlab.com/lucaskev/ynh-dev/`
+2. `cd ynh-dev`
+3.  `cp -r lxd-executor/ /opt`
+4.  `cp config.toml.sample config.toml`
+5.  Edit the config by adding the token obtained at [https://gitlab.com/lucaskev/ynh-dev/-/settings/ci_cd] (the "Set up a specific Runner manually" part): `vim config.toml`
+6. Install gitlab-runner's repo: `curl -L https://packages.gitlab.com/install/repositories/runner/gitlab-runner/script.deb.sh | bash` (think about sudo if you're not root)
+7.  Install gitlab-runner: `apt-get install gitlab-runner`
+<!-- 10. `gitlab-runner register` 
     1.  `https://gitlab.com/`
     2.  The token
     3.  A description
     4.  Tags
     5.  `custom`
-    6.  
-<!-- 11. Copy the conf `cp config.toml /etc/gitlab-runner/` -->
-1.  Open file at `/etc/gitlab-runner/config.toml` and tweak accordingly
-2.  Run Runner: `gitlab-runner run`
+    6.    -->
+11. Copy the conf `cp config.toml /etc/gitlab-runner/`
+12. Run Runner: `gitlab-runner run`
+13. Report bugs and/or open file at `/etc/gitlab-runner/config.toml` and tweak accordingly
 
-To test locally:
+To test:
 ```bash
 EXECUTOR_PATH=/home/USER/ynh-dev/lxd-executor
 gitlab-runner exec custom deploy_app --custom-run-exec $EXECUTOR_PATH/run.sh   --builds-dir "/builds"  --cache-dir "/cache" --custom-prepare-exec $EXECUTOR_PATH/prepare.sh --custom-cleanup-exec $EXECUTOR_PATH/cleanup.sh
 ```
+
 ## On macOS
-On macOS I used multipass.
+On macOS I used multipass with a remote LXD (default IP should be at: 192.168.64.2)
