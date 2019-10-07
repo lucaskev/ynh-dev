@@ -2,8 +2,7 @@
 
 Repo for bootstrapping a gitlab-ci w/ a specific runner using custom executor LXD for installing and testing YNH w/ Bash, and Ansible (and maybe molecule). 
 
-# TODO : make box privileged
-# TODO : start w/ Debian 9
+# TODO: use variables in executor to tell if Debian 9 or Debian 10 box
 
 ## Steps to build executor on VPS
 1. SSH into it
@@ -26,7 +25,7 @@ Repo for bootstrapping a gitlab-ci w/ a specific runner using custom executor LX
       13. no
       14. yes
       15. yes
-  1.  Check if it is similar to:
+  1.  Check if teh output is similar to:
 ```yaml
    config: {}
 networks:
