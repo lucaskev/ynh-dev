@@ -46,6 +46,9 @@ start_container () {
 }
 
 install_dependencies () {
+    echo 'DEBUG: Ping'
+    lxc exec "$CONTAINER_ID" -- sh -c "ping 8.8.8.8 -c"
+    echo 'DEBUG: Updating'
     lxc exec "$CONTAINER_ID" -- sh -c "apt-get update"
     echo 'DEBUG: Installing sudo and curl'
     lxc exec "$CONTAINER_ID" -- sh -c "apt-get install --yes curl sudo"
