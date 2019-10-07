@@ -29,7 +29,10 @@ deploy_app:
     # install yunohost
     - apt install --yes sudo wget
     - 'cd $CI_PROJECT_DIR; echo "Installing YunoHost..."; ./prebuild.sh'
-    - /etc/yunohost/installed
+    # - /etc/yunohost/installed
+    - /usr/bin/yunohost tools diagnosis
+    - /usr/bin/yunohost tools postinstall -d ynh.local -p ynhynhynh
+    - /usr/bin/yunohost user create johndoe -f John -l Doe -m john.doe@ynh.local -q 0 -p ynhynhynh --admin-password ynhynhynh")
     - /usr/bin/yunohost tools diagnosis
     
 ansible_tests:
