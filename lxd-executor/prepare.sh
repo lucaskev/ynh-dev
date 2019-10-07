@@ -22,7 +22,10 @@ start_container () {
     # does not provide the value of `image`. See
     # https://gitlab.com/gitlab-org/gitlab-runner/issues/4357 for
     # details.
-    lxc launch ubuntu:18.04 "$CONTAINER_ID"
+    # lxc launch ubuntu:18.04 "$CONTAINER_ID"
+    lxc launch images:debian/stretch/amd64 "$CONTAINER_ID"
+    lxc config set "$CONTAINER_ID" security.privileged true
+
 
     # Wait for container to start, we are using systemd to check this,
     # for the sake of brevity.
