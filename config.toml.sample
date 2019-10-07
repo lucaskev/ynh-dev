@@ -1,3 +1,8 @@
+check_interval = 0
+
+[session_server]
+  session_timeout = 1800
+  
 [[runners]]
   name = "lxd-executor"
   url = "https://gitlab.com/"
