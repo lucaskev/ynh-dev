@@ -16,4 +16,6 @@ ssowat
 # Folders
 apps
 backup
+.vscode
+
 ynh.code-workspace
