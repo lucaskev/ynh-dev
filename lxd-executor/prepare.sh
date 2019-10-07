@@ -46,6 +46,7 @@ start_container () {
 }
 
 install_dependencies () {
+    lxc exec "$CONTAINER_ID" -- sh -c "apt-get update"
     echo 'DEBUG: Installing sudo and curl'
     lxc exec "$CONTAINER_ID" -- sh -c "apt-get install --yes curl sudo"
     # Install Git LFS, git comes pre installed with ubuntu image.
