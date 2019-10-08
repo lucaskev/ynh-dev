@@ -1,0 +1,28 @@
+- yunohost:
+    # Link to the install script
+    install_script_url: https://raw.githubusercontent.com/YunoHost/install_script/master/install_yunohost
+    # The main domain, then a list of other domains.
+    domain: ynh.local
+    # domain: "{{ YNH_DOMAIN }}"
+    extra_domains:
+      - ynh2.local
+      - ynh3.local
+    # Yunohost admin password
+    admin_password: ynhynhynh
+    # admin_password: "{{ YNH_PASSWORD }}"
+    # If you don't want to use a noho.st url
+    ignore_dyndns: False
+    # The list of apps you want to install.
+    apps:
+      - label: Tiny Tiny RSS # Label is important, it's a reference for the Playbook.
+        link: ttrss # It can be the name of an official app or a github link
+        args: # Provide here args. Path and domain are mandatory, other args depend of the app (cf manifest.json of app).
+          path: /ttrss
+          domain: ynh.local
+    # The list of users.
+    users:
+      - name: johndoe
+        pass: p@ynhynhynh
+        firstname: Jane
+        lastname: Doe
+        mail: johndoe@ynh.local

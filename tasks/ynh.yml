@@ -1,5 +1,4 @@
-- include_vars: ynh-config.yml
-  roles:
+- roles:
      - { role: ansible_yunohost }
 
   name: Provision ynh server
