@@ -1,5 +1,5 @@
 - roles:
-     - { role: ansible_yunohost }
+     - { role: ansible-yunohost }
 
   name: Provision ynh server
   hosts: localhost
