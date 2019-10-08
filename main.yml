@@ -1,0 +1,2 @@
+- import_playbook: tasks/ping.yml
+- import_playbook: tasks/ynh.yml

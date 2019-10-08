@@ -1,17 +1,18 @@
 stages:
-  # - ansible-lint
+  - ansible-lint
   - install_ynh
   - ansible_tests
 
-# ansible-lint:
-#   only:
-#       - master
-#   stage: ansible-lint
-#   image: yokogawa/ansible-lint
-#   allow_failure: true
-#   script:
-
-  # - 'ansible-lint setup.yml'
+ansible-lint:
+  tags:
+    - ynh
+  only:
+      - master
+  stage: ansible-lint
+  image: yokogawa/ansible-lint
+  allow_failure: true
+  script:
+  - 'ansible-lint main.yml'
 
 install_ynh:
   tags:
@@ -30,14 +31,14 @@ install_ynh:
     # - /bin/echo
     # - echo "Test succeeded w/ custom executor!"
     # Deploy git repos
-    - 'cd $CI_PROJECT_DIR; echo "Cloning YunoHost projects..."; ./deploy.sh'
-    # install yunohost
+    - './deploy.sh'
     - apt install --yes sudo wget
-    - 'cd $CI_PROJECT_DIR; echo "Installing YunoHost..."; ./prebuild.sh'
-    # - /etc/yunohost/installed
+    # install yunohost
+    - './prebuild.sh'
     - /usr/bin/yunohost tools postinstall -d $YNH_DOMAIN -p $YNH_PASSWORD
     - /usr/bin/yunohost user create $YNH_ADMIN -f John -l Doe -m john.doe@ynh.local -q 0 -p ynhynhynh --admin-password ynhynhynh
     - /usr/bin/yunohost tools diagnosis
+    # - /etc/yunohost/installed
     
 ansible_tests:
   tags:
@@ -51,4 +52,4 @@ ansible_tests:
     - apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
     - apt update
     - apt install --yes ansible software-properties-common
-    - 'cd $CI_PROJECT_DIR; ansible-playbook --connection=local tasks/main.yml -vvv'
+    - 'ansible-playbook --connection=local main.yml -vvv'

@@ -1,2 +1,0 @@
-- import_playbook: ping.yml
-- import_playbook: ynh.yml
