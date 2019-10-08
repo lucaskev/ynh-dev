@@ -1,0 +1,12 @@
+- include_vars: ynh-config.yml
+  roles:
+     - { role: ansible_yunohost }
+
+  name: Provision ynh server
+  hosts: localhost
+  remote_user: root
+  pre_tasks:
+    - name: Update all packages and index
+      apt:
+        upgrade: dist
+        update_cache: yes

@@ -20,7 +20,12 @@ install_ynh:
     - master
   stage: install_ynh
   # Requires privileged container
-  
+  variables:
+    YNH_PASSWORD: ynhynhynh
+    YNH_DOMAIN: ynh.local
+    YNH_ADMIN: johndoe
+    YNH_ADMINPW: $YNH_PASSWORD
+
   script:
     # - /bin/echo
     # - echo "Test succeeded w/ custom executor!"
@@ -30,8 +35,8 @@ install_ynh:
     - apt install --yes sudo wget
     - 'cd $CI_PROJECT_DIR; echo "Installing YunoHost..."; ./prebuild.sh'
     # - /etc/yunohost/installed
-    - /usr/bin/yunohost tools postinstall -d ynh.local -p ynhynhynh
-    - /usr/bin/yunohost user create johndoe -f John -l Doe -m john.doe@ynh.local -q 0 -p ynhynhynh --admin-password ynhynhynh
+    - /usr/bin/yunohost tools postinstall -d $YNH_DOMAIN -p $YNH_PASSWORD
+    - /usr/bin/yunohost user create $YNH_ADMIN -f John -l Doe -m john.doe@ynh.local -q 0 -p ynhynhynh --admin-password ynhynhynh
     - /usr/bin/yunohost tools diagnosis
     
 ansible_tests:
@@ -46,4 +51,4 @@ ansible_tests:
     - apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
     - apt update
     - apt install --yes ansible software-properties-common
-    - 'cd $CI_PROJECT_DIR; ansible-playbook --connection=local test.yml -vv'
+    - 'cd $CI_PROJECT_DIR; ansible-playbook --connection=local tasks/main.yml -vvv'

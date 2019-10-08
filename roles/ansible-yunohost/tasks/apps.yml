@@ -1,0 +1,18 @@
+---
+- name: Get currently installed apps
+  shell: yunohost app map --output-as json
+  register: yunohost_installed_apps_raw
+  changed_when: False
+
+- name: Set var yunohost_installed_apps
+  set_fact:
+    yunohost_installed_apps: "{{ yunohost_installed_apps_raw.stdout | from_json }}"
+
+- name: Ensure apps are installed
+  shell: >
+    yunohost app install {{ item.link }} \
+    --label "{{ item.label }}" \
+    --args \
+    "{% for key, value in item.args.items() %}{{key}}={{value}}{% if not loop.last %}&{% endif %}{% endfor %}"
+  with_items: "{{ ynh_apps }}"
+  when: item.label not in yunohost_installed_apps.values()
