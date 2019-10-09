@@ -133,7 +133,8 @@ function start_ynhdev()
     set -eu
     set -x
     sudo lxc launch $BOX-base $BOX
-    sudo lxc config device add $BOX ynhdev-shared-folder disk path=/ynh-dev source="$PWD"
+    # Does not work on macOS
+    # sudo lxc config device add $BOX ynhdev-shared-folder disk path=/ynh-dev source="$PWD"
     set +x
 
     attach_ynhdev $BOX
